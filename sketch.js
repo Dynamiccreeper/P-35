@@ -39,6 +39,11 @@ dog.addImage(happyDog);
 if(keyWentDown(DOWN_ARROW)){
   writeStock(foodS);
   dog.addImage(normalDog);
+      update();
+      update();
+
+writeStock();
+    }
   
   }
   
@@ -54,9 +59,22 @@ foodS=data.val();
 }
 
 function writeStock(x){
+	if(x<=0){
+	x=0;
+	}else{
+	x=x-1;
+	}
+	
+	
 database.ref('/').set({
 Food:x
 
 })
 
 }
+
+function updtae(){    
+	database.ref(Food).set({
+      name:this.name,
+      Food:this.Food
+    });}
